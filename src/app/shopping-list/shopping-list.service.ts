@@ -1,4 +1,4 @@
-import { Ingredient } from '../shared/ingredient.model';
+import { Ingredient } from './../shared/ingredient.model';
 import { EventEmitter, Output } from '@angular/core';
 
 export class ShoppingListService {
@@ -10,17 +10,16 @@ export class ShoppingListService {
         return this.ingredients.slice();
     }
 
-    addItem(ingredient: Ingredient) {
+    addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
-    //
-    // removeItem(ingredient: Ingredient) {
-    //     this.shoppingList.splice();
-    // }
-    //
-    // removeAll() {
-    //     this.shoppingList = [];
-    //     return [];
-    // }
+
+    addIngredients(ingredients: Ingredient[]) {
+        // for (let ingredient of ingredients) {
+        //     this.addIngredient(ingredient);
+        // }
+        this.ingredients.push(...ingredients);
+        this.ingredientsChanged.emit(this.ingredients.slice());
+    }
 }
